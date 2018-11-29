@@ -4,14 +4,14 @@ NetSquid-SnippetTemplate
 This repository provides a template for creating [NetSquid snippets](https://netsquid.org/snippets).
 For instructions of how to create a snippet package using this template see the [HOWTO file](HOWTO-SnippetTemplate.md).
 
-**TODO:** remove the above notice and change the title to your snippet's name.
+**TEMPLATE:** remove the above notice and change the title to your snippet's name.
 
 Description
 -----------
 
 This is a user contributed _snippet_ for the [NetSquid quantum network simulator](https://netsquid.org).
 
-**TODO**: briefly describe what your snippet package does.
+**TEMPLATE**: briefly describe what your snippet package does.
 
 Installation
 ------------
@@ -21,17 +21,17 @@ See the _INSTALL.md_ file.
 Usage
 -----
 
-**TODO**: briefly describe how to use your package.
+**TEMPLATE**: briefly describe how to use your package.
 
 Contributors
 ------------
 
-**TODO**: specify who contributed to your package and their contact details.
+**TEMPLATE**: specify who contributed to your package and their contact details.
 
 License
 -------
 
-**TODO**: specify the license applicable to your package.
+**TEMPLATE**: specify the license applicable to your package.
 
 The NetSquid-SnippetTemplate has the following license:
 

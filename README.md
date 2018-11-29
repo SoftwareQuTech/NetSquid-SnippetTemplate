@@ -2,7 +2,7 @@ NetSquid-SnippetTemplate
 ========================
 
 This repository provides a template for creating [NetSquid snippets](https://netsquid.org/snippets).
-For instructions of how to create a snippet package using this template see the [HOWTO file](_HOWTO-SnippetTemplate.md_).
+For instructions of how to create a snippet package using this template see the [HOWTO file](HOWTO-SnippetTemplate.md).
 
 **TODO:** remove the above notice and change the title to your snippet's name.
 

@@ -1,13 +1,17 @@
-NetSquid-MyPkg (TODO: rename)
-=============================
+NetSquid-SnippetTemplate
+========================
 
-This is a user contributed _snippet_ for the [NetSquid](https://netsquid.org) quantum network simulator.
-For instructions of how to create such a snippet see the _HOWTO-SnippetTemplate.md_ file.
+This repository provides a template for creating [NetSquid snippets](https://netsquid.org/snippets).
+For instructions of how to create a snippet package using this template see the [HOWTO file](_HOWTO-SnippetTemplate.md_).
+
+**TODO:** remove the above notice and change the title to your snippet's name.
 
 Description
 -----------
 
-TODO: briefly describe what your snippet package does.
+This is a user contributed _snippet_ for the [NetSquid quantum network simulator](https://netsquid.org).
+
+**TODO**: briefly describe what your snippet package does.
 
 Installation
 ------------
@@ -17,17 +21,17 @@ See the _INSTALL.md_ file.
 Usage
 -----
 
-TODO: briefly describe how to use your package.
+**TODO**: briefly describe how to use your package.
 
 Contributors
 ------------
 
-TODO: specify who contributed to your package and their contact details.
+**TODO**: specify who contributed to your package and their contact details.
 
 License
 -------
 
-TODO: specify the license applicable to your package.
+**TODO**: specify the license applicable to your package.
 
 The NetSquid-SnippetTemplate has the following license:
 

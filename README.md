@@ -16,7 +16,7 @@ This is a user contributed _snippet_ for the [NetSquid quantum network simulator
 Installation
 ------------
 
-See the _INSTALL.md_ file.
+See the [INSTALL file](INSTALL.md) for instruction of how to install this snippet.
 
 Usage
 -----

@@ -1,6 +1,6 @@
 # Edit the setup parameters below to match your snippet
 #
-from setuptools import setup
+from setuptools import setup, find_packages
 from os import path
 
 
@@ -22,8 +22,10 @@ setup(
     author_email='<your email>',
     description='<description of your snippet>',
     long_description=load_readme_text(),
+    long_description_content_type='text/markdown',
     license='Apache-2.0',
-    packages=['netsquid_mysnippet'],  # if offering a package
+    python_requires='>=3.5',
+    packages=find_packages(),
     #py_modules=['netsquid_mysnippet'],  # if offering a single module file
     install_requires=[
         'netsquid'  # any version

@@ -3,7 +3,7 @@ PIP            = pip3
 PYPI_SERVER    = pypi.netsquid.org
 GITBRANCH_NAME = $(shell git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 SNIPPET_NAME   = $(shell basename $(PWD))
-PACKAGE_NAME   = $(shell echo $(SNIPPET_NAME) | tr A-Z- a-z_)
+PACKAGE_NAME   = $(shell echo $(SNIPPET_NAME) | tr A-Z a-z)
 
 python-deps:
 	@$(PIP) install -r requirements.txt

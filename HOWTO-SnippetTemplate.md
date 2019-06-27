@@ -36,9 +36,12 @@ NetSquid-SnippetTemplate/    *RENAME*  - Git repository root directory
     README.md                *MODIFY*  - Your snippet's README
     CHANGELOG.md             *MODIFY*  - Log of changes
     LICENSE                  *MODIFY*  - Your license
+    requirements.txt         *MODIFY*  - Python package requirements
     INSTALL.md                         - General install instructions
     HOWTO-SnippetTemplate.md           - This file, can be removed
     LICENSE-SnippetTemplate            - License of this snippet (keep this)
+    Makefile                           - Specifying make commands, i.e. make tests (keep this)
+    .flake8                            - Specifying linting rules (keep this)
     .git/...                           - Git repository
     .gitignore                         - What git should ignore, modify if needed
 ```

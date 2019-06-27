@@ -14,6 +14,17 @@ def load_readme_text():
         return ""
 
 
+def load_requirements():
+    # Load in requirements.txt as a list of strings
+    try:
+        dir_path = path.abspath(path.dirname(__file__))
+        with open(path.join(dir_path, 'requirements.txt'), encoding='utf-8') as f:
+            install_requires = [line.strip() for line in f.readlines()]
+            return install_requires
+    except FileNotFoundError:
+        return ""
+
+
 setup(
     name='NetSquid-MySnippet',
     version='1.0.0',
@@ -26,13 +37,9 @@ setup(
     license='Apache-2.0',
     python_requires='>=3.5',
     packages=find_packages(),
-    #py_modules=['netsquid_mysnippet'],  # if offering a single module file
-    install_requires=[
-        'netsquid'  # any version
-        #'netsquid>=0.3.5'  # require a minimum version
-        #'netsquid=0.3.5'  # require a specific version
-    ],
-    test_suite='netsquid_mysnippet',
+    #py_modules=['netsquid_mypkg'],  # if offering a single module file
+    install_requires=load_requirements(),
+    test_suite='netsquid_mypkg',
     zip_safe=False,
     include_package_data=True,
     platforms='any',

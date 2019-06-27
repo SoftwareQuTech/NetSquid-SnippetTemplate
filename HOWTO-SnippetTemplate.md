@@ -6,7 +6,7 @@ One way to do so is to clone this repository and use it as the base of your proj
 
 ```shell
 git clone https://github.com/SoftwareQuTech/NetSquid-SnippetTemplate NetSquid-MySnippet
-git rm remote
+git remote rm origin
 ```
 
 Alternatively, if you are using GitHub, you can also _fork_ the repository.

@@ -12,6 +12,12 @@ lint:
 tests:
 	@$(PYTHON3) setup.py test
 
+bdist:
+	$(PYTHON3) setup.py bdist_wheel
+
+deploy-bdist: bdist
+	$(PYTHON3) setup.py deploy
+
 verify: clean python-deps lint tests
 
-.PHONY: clean lint python-deps tests verify
+.PHONY: clean lint python-deps tests verify bdist deploy-bdist

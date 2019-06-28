@@ -18,7 +18,7 @@ Naming conventions
 The name of your snippet should follow the naming convention `NetSquid-SnippetName` e.g. `NetSquid-TrappedIons` for a snippet offering support for trapped ion components.
 This is the name that can be used for the repository and on the [NetSquid snippets](https://netsquid.org/snippets) webpage.
 
-The Python _package name_, as specified in _setup.py_, should be all lower case i.e. `netsquid-snippetname`.
+The Python _package name_, as specified in _setup.cfg_, should be all lower case i.e. `netsquid-snippetname`.
 This is the name used to install the package or refer to it as a dependency.
 For example, if the snippet is available on NetSquid's PyPi index server, it can be installed using:
 
@@ -44,11 +44,12 @@ NetSquid-SnippetTemplate/    *RENAME*  - Git repository root directory
         __init__.py                    - Needed by package (keep this)
         example.py           *REPLACE* - Example module
         test_example.py      *REPLACE* - Example unit test
-    setup.py                 *MODIFY*  - Setup script, including snippet meta data
+    setup.cfg                *MODIFY*  - Configuration for setup script
     README.md                *MODIFY*  - Your snippet's README
     CHANGELOG.md             *MODIFY*  - Log of changes
     LICENSE                  *MODIFY*  - Your license
     requirements.txt         *MODIFY*  - Python package requirements
+    setup.py                           - Setup script (keep this)
     INSTALL.md                         - General install instructions
     HOWTO-SnippetTemplate.md           - This file, can be removed
     LICENSE-SnippetTemplate            - License of this snippet (keep this)

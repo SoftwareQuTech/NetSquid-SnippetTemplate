@@ -26,9 +26,9 @@ def load_requirements():
 
 
 setup(
-    name='NetSquid-MySnippet',
+    name='netsquid-mysnippet',  # use lower case
     version='1.0.0',
-    url='http://github.com/joebloggs/netsquid-mysnippet/',
+    url='http://github.com/joebloggs/Netsquid-MySnippet/',
     author='<your name>',
     author_email='<your email>',
     description='<description of your snippet>',
@@ -37,9 +37,9 @@ setup(
     license='Apache-2.0',
     python_requires='>=3.5',
     packages=find_packages(),
-    #py_modules=['netsquid_mypkg'],  # if offering a single module file
+    #py_modules=['netsquid_mysnippet'],  # if offering a single module file
     install_requires=load_requirements(),
-    test_suite='netsquid_mypkg',
+    test_suite='netsquid_mysnippet',
     zip_safe=False,
     include_package_data=True,
     platforms='any',

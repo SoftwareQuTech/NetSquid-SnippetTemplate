@@ -1,17 +1,16 @@
-PYTHON        = python3
-PIP           = pip3
+PYTHON3 = python3
 
 python-deps:
-	@$(PIP) install -r requirements.txt
+	@$(PYTHON3) -m pip install --user -r requirements.txt
 
 clean:
-	@find . -name '*.pyc' -delete
+	@/usr/bin/find . -name '*.pyc' -delete
 
 lint:
-	@$(PYTHON) setup.py flake8
+	@$(PYTHON3) setup.py flake8
 
 tests:
-	@$(PYTHON) setup.py test
+	@$(PYTHON3) setup.py test
 
 verify: clean python-deps lint tests
 

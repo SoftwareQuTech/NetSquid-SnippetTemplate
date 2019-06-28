@@ -15,11 +15,23 @@ If your project already has a git repository, you can also simply copy over the 
 Naming conventions
 ------------------
 
-All NetSquid snippets should be offered as Python packages (or a single module) with the naming convention `netsquid_<snippetname>` e.g. `netsquid_trappedions` for a snippet offering support for trapped ion components.
-Before naming your snippet please check on the [NetSquid snippets](https://netsquid.org/snippets) page that your name doesn't already exist.
+The name of your snippet should follow the naming convention `NetSquid-SnippetName` e.g. `NetSquid-TrappedIons` for a snippet offering support for trapped ion components.
+This is the name that can be used for the repository and on the [NetSquid snippets](https://netsquid.org/snippets) webpage.
 
-The name of your snippet should follow the package name with the format `NetSquid-SnippetName` e.g. `NetSquid-TrappedIons`.
-This is the name that should be used for the repository name, and on the [NetSquid snippets](https://netsquid.org/snippets) page.
+The Python _package name_, as specified in _setup.py_, should be all lower case i.e. `netsquid-snippetname`.
+This is the name used to install the package or refer to it as a dependency.
+For example, if the snippet is available on NetSquid's PyPi index server, it can be installed using:
+
+```
+pip3 install --user --extra-index-url https://<username>:<password>@pypi.netsquid.org netsquid-snippetname
+```
+
+The name of the package directory or module file should use an underscore in place of the dash i.e. `netsquid_snippetname/` or `netsquid_snippetname.py`.
+The package can be imported in Python using this name:
+
+```python
+import netsquid_snippetname
+```
 
 Adapting the template
 ---------------------
@@ -28,7 +40,7 @@ The template repository contains the following files:
 
 ```
 NetSquid-SnippetTemplate/    *RENAME*  - Git repository root directory
-    netsquid_mypkg/          *RENAME*  - Python package directory
+    netsquid_mysnippet/      *RENAME*  - Python package directory
         __init__.py                    - Needed by package (keep this)
         example.py           *REPLACE* - Example module
         test_example.py      *REPLACE* - Example unit test

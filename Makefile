@@ -1,39 +1,22 @@
-PYTHON         = python3
-PIP            = pip3
-PYPI_SERVER    = pypi.netsquid.org
-GITBRANCH_NAME = $(shell git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
-SNIPPET_NAME   = $(shell basename $(PWD))
-PACKAGE_NAME   = $(shell echo $(SNIPPET_NAME) | tr A-Z a-z)
+PYTHON3 = python3
 
 python-deps:
-	@$(PIP) install -r requirements.txt
+	@$(PYTHON3) -m pip install --user -r requirements.txt
 
 clean:
-	@find . -name '*.pyc' -delete
+	@/usr/bin/find . -name '*.pyc' -delete
 
 lint:
-	@$(PYTHON) setup.py flake8
+	@$(PYTHON3) setup.py flake8
 
 tests:
-	@$(PYTHON) setup.py test
+	@$(PYTHON3) setup.py test
 
 bdist:
-	@echo -e "\n*** Create a binary $(SNIPPET_NAME) wheel distribution file"
-	$(PYTHON) setup.py bdist_wheel
+	$(PYTHON3) setup.py bdist_wheel
 
 deploy-bdist: bdist
-	@echo -e "\n*** Uploading binary snippet $(SNIPPET_NAME) wheels to $(PYPI_SERVER) (requires authentication)"
-ifneq ($(shell echo $(GITBRANCH_NAME)), master)
-	@echo -e "ERROR: attempting to upload from a branch different than master."
-	exit 1
-endif
-ifdef NETSQUIDCI_USER
-	/usr/bin/ssh "$(NETSQUIDCI_USER)@$(PYPI_SERVER)" "mkdir /srv/netsquid/pypi/$(PACKAGE_NAME)" 2> /dev/null || true
-	/usr/bin/scp dist/*.whl "$(NETSQUIDCI_USER)@$(PYPI_SERVER):/srv/netsquid/pypi/$(PACKAGE_NAME)/"
-else
-	@echo -e "ERROR: environment variable NETSQUIDCI_USER is not defined."
-	exit 1
-endif
+	$(PYTHON3) setup.py deploy
 
 verify: clean python-deps lint tests
 

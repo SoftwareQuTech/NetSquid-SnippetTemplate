@@ -9,7 +9,7 @@ import unittest
 import numpy as np
 from netsquid.qubits.ketstates import s0, s1, s00, s11, b00
 from netsquid.qubits.qubitapi import fidelity
-from netsquid_mypkg.samplemodule import create_ghz_qubits
+from netsquid_mysnippet.samplemodule import create_ghz_qubits
 
 
 class TestSampleModule(unittest.TestCase):

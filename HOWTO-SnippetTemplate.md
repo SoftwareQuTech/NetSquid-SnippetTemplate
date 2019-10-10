@@ -42,8 +42,8 @@ The template repository contains the following files:
 NetSquid-SnippetTemplate/    *RENAME*  - Git repository root directory
     netsquid_mysnippet/      *RENAME*  - Python package directory
         __init__.py                    - Needed by package (keep this)
-        example.py           *REPLACE* - Example module
-        test_example.py      *REPLACE* - Example unit test
+        samplemodule.py      *REPLACE* - Example module
+        test_samplemodule.py *REPLACE* - Example unit test
     setup.cfg                *MODIFY*  - Configuration for setup script
     README.md                *MODIFY*  - Your snippet's README
     CHANGELOG.md             *MODIFY*  - Log of changes

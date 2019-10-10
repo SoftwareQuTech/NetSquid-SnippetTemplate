@@ -71,7 +71,7 @@ class DeployCommand(Command):
                 wheel_files.append("dist/{}".format(f))
         # Upload wheel files
         if len(wheel_files) > 0:
-            subprocess.run(("/usr/bin/scp", " ".join(wheel_files), "{}@{}:/srv/netsquid/pypi/{}/".format(
+            subprocess.run(("/usr/bin/scp", *wheel_files, "{}@{}:/srv/netsquid/pypi/{}/".format(
                 os.environ['NETSQUIDCI_USER'], pypi_server, pkg_name)), capture_output=True, encoding='utf8').check_returncode()
         else:
             print("ERROR: no wheel files in dist/ to upload.")

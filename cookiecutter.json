@@ -1,0 +1,12 @@
+{
+  "project_name": "My New Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "project_folder": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "description": "Write some description of the package",
+  "author_name": "Name LastName",
+  "author_email": "name@email.com",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "url": "https://github.com",
+  "minimum_coverage": 90
+}

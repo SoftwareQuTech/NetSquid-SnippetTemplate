@@ -1,0 +1,11 @@
+*.pyc
+docs/build
+docs/_static
+docs/_templates
+build/
+dist/
+.eggs/
+*.egg-info/
+*.idea
+htmlcov/
+.coverage

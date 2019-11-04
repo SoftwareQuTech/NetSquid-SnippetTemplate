@@ -1,50 +1,24 @@
-NetSquid-SnippetTemplate
-========================
+How to create a NetSquid Snippet
+================================
 
-This repository provides a template for creating [NetSquid snippets](https://netsquid.org/snippets).
-For instructions of how to create a snippet package using this template see the [HOWTO file](HOWTO-SnippetTemplate.md).
+NetSquid snippets should follow the provided [template git repository](https://github.com/SoftwareQuTech/NetSquid-SnippetTemplate).
+The template makes use of [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/index.html).
 
-**TEMPLATE:** remove the above notice and change the title to your snippet's name.
+To instantiated a new folder for a new snippet, clone this repo, cd in to it and do
 
-Description
------------
+```shell
+cookiecutter . -o /your/path
+```
 
-This is a user contributed _snippet_ for the [NetSquid quantum network simulator](https://netsquid.org).
+where `/your/path` is the folder you want to place the new snippet in. Note that you need `cookiecutter` installed which can be done by
 
-**TEMPLATE**: briefly describe what your snippet package does.
+```shell
+pip3 install cookiecutter
+```
 
-Installation
-------------
+You will then be asked to fill in a few things.
+First you need to give it a name, for example of the form `NetSquid-SnippetName`.
+If press `<enter>` on the two next entries, these will automatically become `netsquid-snippetname` (for the pip package name) and `netsquid_snippetname` for the folder containing the package.
 
-See the [INSTALL file](INSTALL.md) for instruction of how to install this snippet.
-
-Usage
------
-
-**TEMPLATE**: briefly describe how to use your package.
-
-Contributors
-------------
-
-**TEMPLATE**: specify who contributed to your package and their contact details.
-
-License
--------
-
-**TEMPLATE**: specify the license applicable to your package.
-
-The NetSquid-SnippetTemplate has the following license:
-
-> Copyright 2018 QuTech (TUDelft and TNO)
-> 
->   Licensed under the Apache License, Version 2.0 (the "License");
->   you may not use this file except in compliance with the License.
->   You may obtain a copy of the License at
-> 
->     http://www.apache.org/licenses/LICENSE-2.0
-> 
->   Unless required by applicable law or agreed to in writing, software
->   distributed under the License is distributed on an "AS IS" BASIS,
->   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
->   See the License for the specific language governing permissions and
->   limitations under the License.
+These names and the other arguments will automatically be used in the new files created and there will already be test framework and docs setup for you to get started.
+If you don't want to use the `cookiecutter` you can copy the folder `netsquid-mysnippet` in this repo and update the files manually following the conventions in the file `netsquid-mysnippet/HOWTO-SnippetTemplate`.

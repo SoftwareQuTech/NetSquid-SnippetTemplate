@@ -26,7 +26,7 @@ python-deps:
 build: python-deps html
 
 open:
-	open _build/html/index.html
+	open ${BUILDDIR}/html/index.html
 
 see: html open
 

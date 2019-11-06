@@ -41,16 +41,16 @@ examples:
 	@${PYTHON3} ${RUNEXAMPLES} > /dev/null && echo "Examples OK!" || echo "Examples failed!"
 
 bdist:
-	$(PYTHON3) setup.py bdist_wheel
+	@$(PYTHON3) setup.py bdist_wheel
 
 install: test-deps
 	@$(PYTHON3) -m pip install -e .
 
 _clean_dist:
-	/bin/rm -rf dist
+	@/bin/rm -rf dist
 
 deploy-bdist: _clean_dist bdist
-	$(PYTHON3) setup.py deploy
+	@$(PYTHON3) setup.py deploy
 
 verify: clean test-deps python-deps lint tests examples _verified
 

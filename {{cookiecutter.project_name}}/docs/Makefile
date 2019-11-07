@@ -7,7 +7,7 @@ SPHINXBUILD   = sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = build
 PROJECTNAME   = {{ cookiecutter.project_slug }}
-DOCSSERVER    = pypi.netsquid.org
+DOCSSERVER    = {{ cookiecutter.docs_server }}
 DOCSFOLDER    = /srv/netsquid/docs/snippets
 
 # Put it first so that "make" without argument is like "make help".
@@ -32,7 +32,7 @@ see: html open
 
 upload:
 ifdef NETSQUIDCI_USER
-	echo "scp -r ${BUILDDIR}/html/* $NETSQUIDCI_USER@${DOCSSERVER}:${DOCSFOLDER}/${PROJECTNAME}"
+	/usr/bin/env scp -r ${BUILDDIR}/html/* $NETSQUIDCI_USER@${DOCSSERVER}:${DOCSFOLDER}/${PROJECTNAME}
 else
 	$(error Set the environment variable NETSQUIDCI_USER before uploading)
 endif

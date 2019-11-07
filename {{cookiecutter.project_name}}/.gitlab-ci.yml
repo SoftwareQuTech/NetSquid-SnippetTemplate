@@ -1,0 +1,52 @@
+image: adahlberg/nlblueprintci:18.04
+
+before_script:
+    ## Add private key to server access
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" | ssh-add - > ~/.ssh/id_rsa
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+
+     ## Install other dependencies
+    - pip3 install -r requirements.txt --extra-index-url "https://${NETSQUIDPYPI_USER}:${NETSQUIDPYPI_PWD}@pypi.netsquid.org"
+
+stages:
+    - install
+    - lint
+    - tests
+    - examples
+    - deploy
+
+install:
+    stage: install
+    script: make install
+
+lint:
+    stage: lint
+    script: make lint
+
+test:
+    stage: tests
+    script: make tests
+
+examples:
+    stage: examples
+    script: make examples
+
+deploy-wheel:
+    stage: deploy
+    only:
+        - master
+    when: manual
+    script: make deploy-bdist
+
+deploy-docs:
+    stage: deploy
+    only:
+        - master
+    when: manual
+    script: 
+        - cd docs
+        - make build
+        - make upload

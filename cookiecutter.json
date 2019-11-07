@@ -1,5 +1,6 @@
 {
-  "project_name": "My New Project",
+  "snippet_name": "MySnippet",
+  "project_name": "NetSquid-{{ cookiecutter.snippet_name }}",
   "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
   "project_folder": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "description": "Write some description of the package",
@@ -8,5 +9,9 @@
   "version": "0.0.0",
   "license": "Apache-2.0",
   "url": "https://github.com",
-  "minimum_coverage": 90
+  "docs_server": "docs.netsquid.org",
+  "pip_server": "pypi.netsquid.org",
+  "netsquid_min": "0.6.2",
+  "netsquid_max": "0.7.0",
+  "minimum_coverage": 0
 }

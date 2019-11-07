@@ -3,6 +3,7 @@ SOURCEDIR    = {{ cookiecutter.project_folder }}
 TESTDIR      = tests
 EXAMPLES     = examples
 RUNEXAMPLES  = ${EXAMPLES}/run_examples.py
+PIP_FLAGS    = --extra-index-url=https://${NETSQUIDPYPI_USER}:${NETSQUIDPYPI_PWD}@pypi.netsquid.org
 MINCOV       = {{ cookiecutter.minimum_coverage }}
 
 help:
@@ -22,8 +23,8 @@ help:
 test-deps:
 	@$(PYTHON3) -m pip install -r test_requirements.txt
 
-python-deps:
-	@$(PYTHON3) -m pip install -r requirements.txt
+python-deps: _check_variables
+	@$(PYTHON3) -m pip install -r requirements.txt ${PIP_FLAGS}
 
 clean:
 	@/usr/bin/find . -name '*.pyc' -delete
@@ -41,20 +42,28 @@ examples:
 	@${PYTHON3} ${RUNEXAMPLES} > /dev/null && echo "Examples OK!" || echo "Examples failed!"
 
 bdist:
-	$(PYTHON3) setup.py bdist_wheel
+	@$(PYTHON3) setup.py bdist_wheel
 
-install: test-deps
-	@$(PYTHON3) -m pip install -e .
+install: _check_variables test-deps
+	@$(PYTHON3) -m pip install -e . ${PIP_FLAGS}
+
+_check_variables:
+ifndef NETSQUIDPYPI_USER
+	$(error Set the environment variable NETSQUIDPYPI_USER before uploading)
+endif
+ifndef NETSQUIDPYPI_PWD
+	$(error Set the environment variable NETSQUIDPYPI_PWD before uploading)
+endif
 
 _clean_dist:
-	/bin/rm -rf dist
+	@/bin/rm -rf dist
 
 deploy-bdist: _clean_dist bdist
-	$(PYTHON3) setup.py deploy
+	@$(PYTHON3) setup.py deploy
 
 verify: clean test-deps python-deps lint tests examples _verified
 
 _verified:
 	@echo "The snippet is verified :)"
 
-.PHONY: clean lint test-deps python-deps tests verify bdist deploy-bdist _clean_dist install open-cov-report examples
+.PHONY: clean lint test-deps python-deps tests verify bdist deploy-bdist _clean_dist install open-cov-report examples _check_variables

@@ -13,6 +13,11 @@ Installation
 
 See the [INSTALL file](INSTALL.md) for instruction of how to install this snippet.
 
+Documentation
+-------------
+
+So build and see the docs see the [docs README](docs/README.md).
+
 Usage
 -----
 

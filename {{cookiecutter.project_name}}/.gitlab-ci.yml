@@ -21,18 +21,30 @@ stages:
 install:
     stage: install
     script: make install
+    only:
+        - master
+        - merge_requests
 
 lint:
     stage: lint
     script: make lint
+    only:
+        - master
+        - merge_requests
 
 test:
     stage: tests
     script: make tests
+    only:
+        - master
+        - merge_requests
 
 examples:
     stage: examples
     script: make examples
+    only:
+        - master
+        - merge_requests
 
 deploy-wheel:
     stage: deploy
@@ -50,3 +62,4 @@ deploy-docs:
         - cd docs
         - make build
         - make upload
+        - cd ..

@@ -1,15 +1,18 @@
 image: adahlberg/nlblueprintci:18.04
 
-before_script:
-    ## Add private key to server access
-    - eval $(ssh-agent -s)
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "$SSH_PRIVATE_KEY" | ssh-add - > ~/.ssh/id_rsa
-    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+.add_ssh_key: &ssh_key
+    before_script:
+        ## Add private key to server access
+        - eval $(ssh-agent -s)
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+        - echo "$SSH_PRIVATE_KEY" | ssh-add - > ~/.ssh/id_rsa
+        - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+        - source venv/bin/activate
 
-     ## Install other dependencies
-    - pip3 install -r requirements.txt --extra-index-url "https://${NETSQUIDPYPI_USER}:${NETSQUIDPYPI_PWD}@pypi.netsquid.org"
+.source_venv: &venv
+    before_script:
+        - source venv/bin/activate
 
 stages:
     - install
@@ -20,12 +23,21 @@ stages:
 
 install:
     stage: install
+    artifacts:
+        paths:
+            - venv
+        expire_in: 1 hour
+    before_script:
+        - pip3 install virtualenv
+        - virtualenv venv
+        - source venv/bin/activate
     script: make install
     only:
         - master
         - merge_requests
 
 lint:
+    <<: *venv
     stage: lint
     script: make lint
     only:
@@ -33,6 +45,7 @@ lint:
         - merge_requests
 
 test:
+    <<: *venv
     stage: tests
     script: make tests
     only:
@@ -40,6 +53,7 @@ test:
         - merge_requests
 
 examples:
+    <<: *venv
     stage: examples
     script: make examples
     only:
@@ -47,6 +61,7 @@ examples:
         - merge_requests
 
 deploy-wheel:
+    <<: *ssh_key
     stage: deploy
     only:
         - master
@@ -54,6 +69,7 @@ deploy-wheel:
     script: make deploy-bdist
 
 deploy-docs:
+    <<: *ssh_key
     stage: deploy
     only:
         - master

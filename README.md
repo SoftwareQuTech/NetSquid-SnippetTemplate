@@ -63,4 +63,5 @@ NetSquid-SnippetTemplate/            - Git repository root directory
     .flake8                          - Specifying linting rules
     .gitignore                       - What git should ignore, modify if needed
     .gitlab-ci.yml                   - Specifying CI on gitlab
+    .coveragerc                      - Specifying how to compute test coverage
 ```

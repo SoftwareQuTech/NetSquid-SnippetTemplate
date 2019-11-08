@@ -7,11 +7,11 @@
   "author_name": "Name LastName",
   "author_email": "name@email.com",
   "version": "0.0.0",
-  "license": "Apache-2.0",
+  "license": ["Apache-2.0", "MIT", "BSD-3", "GNU GPL v3.0"],
+  "copyright": "2018-2020 QuTech (TUDelft and TNO)",
   "url": "https://github.com",
   "docs_server": "docs.netsquid.org",
   "pip_server": "pypi.netsquid.org",
-  "netsquid_min": "0.6.2",
-  "netsquid_max": "0.7.0",
+  "netsquid_constraint": ">=0.6.2,<0.7.0",
   "minimum_coverage": 0
 }

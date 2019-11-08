@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages, Command
 import os
 from os import path
-import re
 import subprocess
 import configparser
 
@@ -46,24 +45,12 @@ class DeployCommand(Command):
     def finalize_options(self):
         pass
 
-    def _get_gitbranch(self):
-        # Get name of current git branch
-        output = subprocess.run(('git', 'symbolic-ref', 'HEAD'), capture_output=True, encoding='utf8').stdout
-        return re.sub('refs/heads/', '', output.rstrip())
-
     def run(self):
         print("Uploading binary snippet {} wheels to {} (requires authentication)"
               .format(pkg_name, pypi_server))
-        if self._get_gitbranch() != 'master':
-            print("ERROR: Attempting to upload from a branch different than master.")
-            return
         if 'NETSQUIDCI_USER' not in os.environ:
             print("ERROR: environment variable NETSQUIDCI_USER is not defined.")
             return
-        # Create package directory if needed
-        subprocess.run(("/usr/bin/ssh", "{}@{}".format(os.environ['NETSQUIDCI_USER'], pypi_server),
-                        "mkdir", "-p", "/srv/netsquid/pypi/{}".format(pkg_name)),
-                       capture_output=True, encoding='utf8').check_returncode()
         # Check for wheel files
         wheel_files = []
         for f in os.listdir("dist/"):
@@ -71,8 +58,8 @@ class DeployCommand(Command):
                 wheel_files.append("dist/{}".format(f))
         # Upload wheel files
         if len(wheel_files) > 0:
-            subprocess.run(("/usr/bin/scp", *wheel_files, "{}@{}:/srv/netsquid/pypi/{}/".format(
-                os.environ['NETSQUIDCI_USER'], pypi_server, pkg_name)), capture_output=True, encoding='utf8').check_returncode()
+            subprocess.check_output(("/usr/bin/scp", " ".join(wheel_files), "{}@{}:/srv/netsquid/pypi/{}/".format(
+                os.environ['NETSQUIDCI_USER'], pypi_server, pkg_name)), encoding='utf8')
         else:
             print("ERROR: no wheel files in dist/ to upload.")
 

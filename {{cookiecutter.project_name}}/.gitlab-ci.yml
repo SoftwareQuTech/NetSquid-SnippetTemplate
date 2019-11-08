@@ -7,7 +7,9 @@ image: adahlberg/nlblueprintci:18.04
         - mkdir -p ~/.ssh
         - chmod 700 ~/.ssh
         - echo "$SSH_PRIVATE_KEY" | ssh-add - > ~/.ssh/id_rsa
+        - chmod 400 ~/.ssh/id_rsa
         - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+        - chmod 644 ~/.ssh/known_hosts
         - source venv/bin/activate
 
 .source_venv: &venv

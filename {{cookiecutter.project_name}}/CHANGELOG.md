@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-2019-11-04 ({{ cookiecutter.version }})
+{% now 'local', '%Y-%m-%d' %} ({{ cookiecutter.version }})
 ------------------
 
 Example changelog entry

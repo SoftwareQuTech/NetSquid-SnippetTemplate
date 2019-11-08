@@ -1,1 +1,1 @@
-netsquid>={{ cookiecutter.netsquid_min }},<{{ cookiecutter.netsquid_max }}
+netsquid{{ cookiecutter.netsquid_constraint }}

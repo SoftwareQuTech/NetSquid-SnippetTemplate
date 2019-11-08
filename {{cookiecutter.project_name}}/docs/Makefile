@@ -32,7 +32,7 @@ see: html open
 
 upload:
 ifdef NETSQUIDCI_USER
-	/usr/bin/env scp -r ${BUILDDIR}/html/* $NETSQUIDCI_USER@${DOCSSERVER}:${DOCSFOLDER}/${PROJECTNAME}
+	/usr/bin/env scp -r ${BUILDDIR}/html/* ${NETSQUIDCI_USER}@${DOCSSERVER}:${DOCSFOLDER}/${PROJECTNAME}
 else
 	$(error Set the environment variable NETSQUIDCI_USER before uploading)
 endif

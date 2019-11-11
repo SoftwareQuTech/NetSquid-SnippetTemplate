@@ -12,7 +12,7 @@ See the [docs](https://cookiecutter.readthedocs.io/en/latest/installation.html) 
 To instantiated a new folder for a new snippet, clone this repo, cd in to it and do
 
 ```shell
-cookiecutter . -o /your/path
+./make.sh . -o /your/path
 ```
 
 where `/your/path` is the folder you where your snippet will be placed (note that this is not the snippet project directory itself.

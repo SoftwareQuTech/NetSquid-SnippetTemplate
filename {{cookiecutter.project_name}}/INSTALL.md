@@ -13,13 +13,13 @@ For Python to be able to find the NetSquid snippet package it needs to be instal
 To install the package using pip run the following command in the repository root directory:
 
 ```shell
-pip3 install --user .
+make install
 ```
 
-The package can also be installed in editable mode by adding `--editable`: this links the installation to the files in this repository, allowing the installed package to be edited.
+Note: If your snippet depends on other snippets on the netsquid server you first need to install them as
 
 ```shell
-pip3 install --user --editable .
+pip3 install -r requirements.txt --extra-index-url https://<username>:<password>@pypi.netsquid.org
 ```
 
 ### Install without using pip
@@ -44,8 +44,8 @@ or add this line to your `$HOME/.bashrc`.
 Running the tests
 -----------------
 
-To run all of the available unit tests run the following command in the repository root directory:
+To run all of the available unit tests including the linter, run the following command in the repository root directory:
 
 ```shell
-python3 setup.py test
+make verify
 ```

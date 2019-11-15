@@ -9,6 +9,8 @@ pip3 install cookiecutter
 ```
 See the [docs](https://cookiecutter.readthedocs.io/en/latest/installation.html) for more instructions.
 
+To see other snippets and to access netsquid itself, see https://netsquid.org/.
+
 To instantiated a new folder for a new snippet, clone this repo, cd in to it and do
 
 ```shell

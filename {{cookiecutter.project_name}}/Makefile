@@ -24,7 +24,7 @@ help:
 test-deps:
 	@$(PYTHON3) -m pip install -r test_requirements.txt
 
-requirements | python-deps: _check_variables
+requirements python-deps: _check_variables
 	@$(PYTHON3) -m pip install -r requirements.txt ${PIP_FLAGS}
 
 clean:
@@ -42,7 +42,7 @@ open-cov-report:
 examples:
 	@${PYTHON3} ${RUNEXAMPLES} > /dev/null && echo "Examples OK!" || echo "Examples failed!"
 
-docs | html:
+docs html:
 	@${MAKE} -C docs html
 
 bdist:

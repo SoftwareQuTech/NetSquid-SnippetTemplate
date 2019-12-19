@@ -9,7 +9,7 @@ MINCOV       = {{ cookiecutter.minimum_coverage }}
 help:
 	@echo "install           Installs the package (editable)."
 	@echo "verify            Verifies the installation, runs the linter and tests."
-	@echo "test              Runs the tests."
+	@echo "tests             Runs the tests."
 	@echo "examples          Runs the examples and makes sure they work."
 	@echo "open-cov-report   Creates and opens the coverage report."
 	@echo "lint              Runs the linter."
@@ -17,13 +17,14 @@ help:
 	@echo "bdist             Builds the package."
 	@echo "test-deps         Installs the requirements needed for running tests and linter."
 	@echo "python-deps       Installs the requirements needed for using the package."
+	@echo "docs              Creates the html documentation"
 	@echo "clean             Removes all .pyc files."
 	
 
 test-deps:
 	@$(PYTHON3) -m pip install -r test_requirements.txt
 
-python-deps: _check_variables
+requirements | python-deps: _check_variables
 	@$(PYTHON3) -m pip install -r requirements.txt ${PIP_FLAGS}
 
 clean:
@@ -40,6 +41,9 @@ open-cov-report:
 
 examples:
 	@${PYTHON3} ${RUNEXAMPLES} > /dev/null && echo "Examples OK!" || echo "Examples failed!"
+
+docs | html:
+	@${MAKE} -C docs html
 
 bdist:
 	@$(PYTHON3) setup.py bdist_wheel
@@ -66,4 +70,4 @@ verify: clean test-deps python-deps lint tests examples _verified
 _verified:
 	@echo "The snippet is verified :)"
 
-.PHONY: clean lint test-deps python-deps tests verify bdist deploy-bdist _clean_dist install open-cov-report examples _check_variables
+.PHONY: clean lint test-deps python-deps tests verify bdist deploy-bdist _clean_dist install open-cov-report examples _check_variables docs

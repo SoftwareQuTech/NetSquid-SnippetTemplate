@@ -26,7 +26,7 @@ If press `<enter>` on the two next entries, these will automatically become `net
 These names and the other arguments will automatically be used in the new files created and there will already be test framework and docs setup for you to get started.
 
 The cookiecutter will create the files below.
-The files marked by (replace) are dummy files that should be replaces with your actual package and tests etc.
+The files marked by (replace) are dummy files that should be replaced with your actual package and tests etc.
 
 ```
 NetSquid-SnippetTemplate/            - Git repository root directory

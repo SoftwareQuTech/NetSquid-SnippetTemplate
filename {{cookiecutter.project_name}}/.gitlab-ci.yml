@@ -10,11 +10,19 @@ image: adahlberg/nlblueprintci:18.04
         - chmod 400 ~/.ssh/id_rsa
         - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
         - chmod 644 ~/.ssh/known_hosts
-        - source venv/bin/activate
 
-.source_venv: &venv
+.only_mr: &only_mr
+    only:
+        - master
+        - merge_requests
+
+.only_master: &only_master
+    only:
+        - master
+
+.install: &install
     before_script:
-        - source venv/bin/activate
+        - make install
 
 stages:
     - install
@@ -25,59 +33,40 @@ stages:
 
 install:
     stage: install
-    artifacts:
-        paths:
-            - venv
-        expire_in: 1 hour
-    before_script:
-        - pip3 install virtualenv
-        - virtualenv venv
-        - source venv/bin/activate
     script: make install
-    only:
-        - master
-        - merge_requests
+    <<: *only_mr
 
 lint:
-    <<: *venv
+    <<: *install
     stage: lint
     script: make lint
-    only:
-        - master
-        - merge_requests
+    <<: *only_mr
 
 test:
-    <<: *venv
+    <<: *install
     stage: tests
     script: make tests
-    only:
-        - master
-        - merge_requests
+    <<: *only_mr
 
 examples:
-    <<: *venv
+    <<: *install
     stage: examples
     script: make examples
-    only:
-        - master
-        - merge_requests
+    <<: *only_mr
 
 deploy-wheel:
     <<: *ssh_key
     stage: deploy
-    only:
-        - master
-    when: manual
     script: make deploy-bdist
+    <<: *only_master
 
 deploy-docs:
     <<: *ssh_key
     stage: deploy
-    only:
-        - master
-    when: manual
     script: 
+        - make install
         - cd docs
         - make build
         - make upload
         - cd ..
+    <<: *only_master

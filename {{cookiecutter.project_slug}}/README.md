@@ -16,7 +16,7 @@ See the [INSTALL file](INSTALL.md) for instruction of how to install this snippe
 Documentation
 -------------
 
-So build and see the docs see the [docs README](docs/README.md).
+To build and see the docs see the [docs README](docs/README.md).
 
 Usage
 -----
@@ -35,14 +35,14 @@ License
 
 The NetSquid-SnippetTemplate has the following license:
 
-> Copyright 2018 QuTech (TUDelft and TNO)
-> 
+> Copyright 2020 QuTech (TUDelft and TNO)
+>
 >   Licensed under the Apache License, Version 2.0 (the "License");
 >   you may not use this file except in compliance with the License.
 >   You may obtain a copy of the License at
-> 
+>
 >     http://www.apache.org/licenses/LICENSE-2.0
-> 
+>
 >   Unless required by applicable law or agreed to in writing, software
 >   distributed under the License is distributed on an "AS IS" BASIS,
 >   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.

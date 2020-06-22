@@ -1,7 +1,7 @@
 NetSquid Snippet Installation
 =============================
 
-There are the general installation instructions for [NetSquid snippet](https://netsquid.org/snippets) packages.
+These are the general installation instructions for [NetSquid snippet](https://netsquid.org/snippets) packages.
 
 Installation
 ------------

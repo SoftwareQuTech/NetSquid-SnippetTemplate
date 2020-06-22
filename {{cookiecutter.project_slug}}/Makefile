@@ -19,12 +19,12 @@ help:
 	@echo "python-deps       Installs the requirements needed for using the package."
 	@echo "docs              Creates the html documentation"
 	@echo "clean             Removes all .pyc files."
-	
 
 test-deps:
 	@$(PYTHON3) -m pip install -r test_requirements.txt
 
-requirements python-deps: _check_variables
+requirements python-deps:
+	@$(PYTHON3) -m pip install "pip>=19.0"
 	@$(PYTHON3) -m pip install -r requirements.txt ${PIP_FLAGS}
 
 clean:
@@ -48,16 +48,8 @@ docs html:
 bdist:
 	@$(PYTHON3) setup.py bdist_wheel
 
-install: _check_variables test-deps
+install: python-deps test-deps
 	@$(PYTHON3) -m pip install -e . ${PIP_FLAGS}
-
-_check_variables:
-ifndef NETSQUIDPYPI_USER
-	$(error Set the environment variable NETSQUIDPYPI_USER before uploading)
-endif
-ifndef NETSQUIDPYPI_PWD
-	$(error Set the environment variable NETSQUIDPYPI_PWD before uploading)
-endif
 
 _clean_dist:
 	@/bin/rm -rf dist

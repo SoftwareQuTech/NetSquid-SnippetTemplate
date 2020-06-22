@@ -12,6 +12,6 @@
   "url": "https://gitlab.com/username/netsquid-mysnippet",
   "docs_server": "docs.netsquid.org",
   "pip_server": "pypi.netsquid.org",
-  "netsquid_constraint": ">=0.8.0,<0.9.0",
+  "netsquid_constraint": ">=0.9.1,<1.0.0",
   "minimum_coverage": 0
 }

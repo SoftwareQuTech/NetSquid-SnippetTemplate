@@ -10,17 +10,13 @@ For Python to be able to find the NetSquid snippet package it needs to be instal
 
 ### Install using pip
 
-To install the package using pip run the following command in the repository root directory:
+To install the package and its requirements using pip run the following command in the repository root directory:
 
 ```shell
 make install
 ```
 
-Note: If your snippet depends on other snippets on the netsquid server you first need to install them as
-
-```shell
-pip3 install -r requirements.txt --extra-index-url https://<username>:<password>@pypi.netsquid.org
-```
+Note: To be able to install NetSquid and possibly other snippets on the netsquid server you need to provide your user name and password for the pypi server (*pypi.netsquid.org*); these match your forum credentials. You can store the user name and password in the environment variables NETSQUIDPYPI_USER and NETSQUIDPYPI_PWD, respectively, to prevent having to type them in manually during installation.
 
 ### Install without using pip
 

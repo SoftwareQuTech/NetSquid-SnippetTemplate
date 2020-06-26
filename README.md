@@ -1,6 +1,8 @@
 How to create a NetSquid Snippet
 ================================
 
+**THIS REPO HAS MOVED TO https://gitlab.com/softwarequtech/netsquid-snippets/NetSquid-SnippetTemplate**
+
 NetSquid snippets should follow the provided [template git repository](https://github.com/SoftwareQuTech/NetSquid-SnippetTemplate).
 The template makes use of [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/index.html).
 You can install cookiecutter as
